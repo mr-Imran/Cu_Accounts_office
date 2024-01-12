@@ -92,6 +92,15 @@
 <body>
 
     <script>
+         function handleNativeActions(action, data) {
+            if (action === 'call') {
+                // Call the native function to open phone dialer
+                window.android.callNumber(data);
+            } else if (action === 'email') {
+                // Call the native function to open email client
+                window.android.sendEmail(data);
+            }
+        }
         const excelData = {
             'হিসাব নিয়ামক (ভারপ্রাপ্ত)': [
                 { name: 'জনাব মোঃ আমিরুল ইসলাম', phoneNumber: '01712921227',email:'nizam1uddin2002@gmail.com'  },
