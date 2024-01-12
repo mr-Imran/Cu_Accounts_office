@@ -145,7 +145,7 @@
             for (const position in excelData) {
                 html += `<tr><th>${position}</th><th>Phone Number</th><th>Actions</th></tr>`;
                 excelData[position].forEach((staff) => {
-                    html += `<tr><td>${staff.name}</td><td>${staff.phoneNumber}</td><td><i class="fas fa-phone call-icon" onclick="callNumber('${staff.phoneNumber}')"></i><i class="fas fa-envelope email-icon" onclick="sendEmail('${staff.email}')"></i></td></tr>`;
+                    html += `<tr><td>${staff.name}</td><td onclick="copytoClipboard('${staff.phoneNumber}')">${staff.phoneNumber}</td><td><i class="fas fa-phone call-icon" onclick="callNumber('${staff.phoneNumber}')"></i><i class="fas fa-envelope email-icon" onclick="sendEmail('${staff.email}')"></i></td></tr>`;
                 });
             }
             html += '</table>';
@@ -160,6 +160,10 @@
             window.location.href = `mailto:${email}`;
         }
 
+        function copytoClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Phone number copied to clipboard');
+        }
         generateHTML();
     </script>
 
